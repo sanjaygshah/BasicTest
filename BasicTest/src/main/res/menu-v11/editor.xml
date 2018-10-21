@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  OliBasic is a fork of BASIC! for Android
+  
+  BASIC! is an implementation of the Basic programming language for
+  Android devices.
+  
+  This file is part of OliBasic 
+  
+  Copyrights (C) 2010 - 2017 of the base code and licensing under the terms of GNU GPLv3 by Paul Laughton.
+  
+  Copyrights  (C) 2016 - 2018 for all changes and the whole composition by Gregor Tiemeyer.
+  
+  Licensed under the terms of GNU GPLv3
+  
+  
+      BASIC! and OliBasic are free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+  
+      BASIC! and OliBasic are distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+  
+      You should have received a copy of the GNU General Public License
+      along with BASIC!.  If not, see <http://www.gnu.org/licenses/>.
+  
+      You may contact the author or current maintainers at http://rfobasic.freeforums.org
+-->
+<!-- This is the layout for devices with the menu in the Action Bar overflow -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- Editor sub menu items 2018-01-04gt, added previous on 2018-07-04gt-->
+    <item android:id="@+id/shift"
+    android:icon="@drawable/submenu"
+    android:title="@string/shift">
+        <menu>
+            <item android:id="@+id/reload" android:title="@string/reload"/>
+            <item android:id="@+id/reload_run" android:title="@string/reload_run"/>
+            <item android:id="@+id/previous" android:title="@string/previous"/>
+            <item android:id="@+id/m_h_b" android:title="@string/m_h_b"/>
+			<item android:id="@+id/search_b" android:title="@string/search_b"/>
+			<item android:id="@+id/code_service_wph" android:title="@string/code_service_wph"/>
+			<item android:id="@+id/save_run_wph" android:title="@string/save_run_wph"/>
+			<item android:id="@+id/save_comp" android:title="@string/save_comp"/>
+			<item android:id="@+id/format_b" android:title="@string/format_b"/>
+			<item android:id="@+id/delete_b" android:title="@string/delete_b"/>
+		</menu>
+    </item>
+    
+    <item android:id="@+id/run"
+    android:title="@string/run"/>
+
+    <item android:id="@+id/load"
+    android:title="@string/load"/>
+
+    <item android:id="@+id/load_run"
+    android:title="@string/load_run"/>
+
+    <item android:id="@+id/save"
+    android:title="@string/save"/>
+
+    <item android:id="@+id/save_run"
+    android:title="@string/save_run"/>
+
+    <item android:id="@+id/clear"
+    android:title="@string/clear"/>
+
+    <item android:id="@+id/search"
+    android:title="@string/search"/>
+
+    <item android:id="@+id/format"
+    android:title="@string/format"/>
+
+    <item android:id="@+id/delete"
+    android:title="@string/delete"/>
+ 
+    <item android:id="@+id/settings"
+    android:title="@string/settings"/>
+
+    <item android:id="@+id/help"
+    android:title="@string/help"/>
+
+    <item android:id="@+id/about"
+    android:title="@string/about"/>
+
+    <item android:id="@+id/exit"
+    android:title="@string/exit"/>
+
+</menu>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+OliBasic is a fork of BASIC! for Android
+
+BASIC! is an implementation of the Basic programming language for
+Android devices.
+
+This file is part of OliBasic 
+
+Copyrights (C) 2010 - 2017 of the base code and licensing under the terms of GNU GPLv3 by Paul Laughton.
+
+Copyrights  (C) 2016 - 2018 for all changes and the whole composition by Gregor Tiemeyer.
+
+Licensed under the terms of GNU GPLv3
+
+
+    BASIC! and OliBasic are free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    BASIC! and OliBasic are distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with BASIC!.  If not, see <http://www.gnu.org/licenses/>.
+
+    You may contact the author or current maintainers at http://rfobasic.freeforums.org
+
+-->
+
+
+<!-- Layout for the CamPreview  2017-09-08gt -->
+<!--     android:orientation="horizontal" -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+  <FrameLayout
+    android:id="@+id/camera_preview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    />
+
+       <!--
+  <Button
+    android:id="@+id/button_capture"
+    android:text="Capture"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    />
+  
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" android:text="@string/pick_action"/>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/get_image" android:id="@+id/getImageButton" android:onClick="getImageFromGallery"></Button>
+<Button android:id="@+id/Button01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/mod_image" android:onClick="getModImage"></Button>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/test_button" android:text="@string/browse_website" android:onClick="onBrowseWebsite"></Button>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/dial_phone" android:onClick="onDialPhone" android:text="@string/dial_phone"></Button>
+ -->
+  
+</LinearLayout>

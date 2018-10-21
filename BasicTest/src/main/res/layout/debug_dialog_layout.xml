@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  OliBasic is a fork of BASIC! for Android
+  
+  BASIC! is an implementation of the Basic programming language for
+  Android devices.
+  
+  This file is part of OliBasic 
+  
+  Copyrights (C) 2010 - 2017 of the base code and licensing under the terms of GNU GPLv3 by Paul Laughton.
+  
+  Copyrights  (C) 2016 - 2018 for all changes and the whole composition by Gregor Tiemeyer.
+  
+  Licensed under the terms of GNU GPLv3
+  
+  
+      BASIC! and OliBasic are free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+  
+      BASIC! and OliBasic are distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+  
+      You should have received a copy of the GNU General Public License
+      along with BASIC!.  If not, see <http://www.gnu.org/licenses/>.
+  
+      You may contact the author or current maintainers at http://rfobasic.freeforums.org
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:orientation="vertical" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:fillViewport="true">
+			
+			<ListView 
+				android:id="@+id/debug_list"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" >
+			</ListView>
+</RelativeLayout>

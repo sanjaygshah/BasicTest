@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  OliBasic is a fork of BASIC! for Android
+  
+  BASIC! is an implementation of the Basic programming language for
+  Android devices.
+  
+  This file is part of OliBasic 
+  
+  Copyrights (C) 2010 - 2017 of the base code and licensing under the terms of GNU GPLv3 by Paul Laughton.
+  
+  Copyrights  (C) 2016 - 2018 for all changes and the whole composition by Gregor Tiemeyer.
+  
+  Licensed under the terms of GNU GPLv3
+  
+  
+      BASIC! and OliBasic are free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+  
+      BASIC! and OliBasic are distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+  
+      You should have received a copy of the GNU General Public License
+      along with BASIC!.  If not, see <http://www.gnu.org/licenses/>.
+  
+      You may contact the author or current maintainers at http://rfobasic.freeforums.org
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.rfo.basicTest"
+    android:versionCode="1910"
+    android:versionName="1.91"
+    android:installLocation="auto"
+    tools:ignore="UnusedAttribute"> <!-- installLocation not available in API 7 -->
+
+     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<!-- vv 2017-03-14 gt Added ACCESS_NETWORK_STATE -->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" /> <!-- 2017-04-11gt -->
+    <!-- <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED">android:required="false" /> -->
+	<uses-permission android:name="android.permission.READ_CONTACTS"/> <!-- 2017-09-03gt -->
+	<!-- <uses-permission android:name="android.permission.WRITE_SETTINGS"/>  2017-09-23gt -->
+	<!-- <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/> 2017-09-23gt -->
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <!--   2017-09-28gt -->
+    <uses-permission android:name="com.android.launcher.permission.ACCESS_SUPERUSER" />
+    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_LOGS" /> 2017-09-28gt -->
+   <!--  <uses-permission android:name="com.android.launcher.permission.READ_LOGS" />  2017-09-28gt -->
+    <uses-permission android:name="jackpal.androidterm.permission.RUN_SCRIPT" /> <!-- 2017-10-01gt for a deeper shell-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 2017-10-02gt -->
+
+    <uses-feature android:name="android.hardware.telephony" android:required="false" />
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
+    <uses-feature android:name="android.hardware.location" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
+    <uses-feature android:name="android.hardware.location.network" android:required="false" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+
+
+    <supports-screens android:xlargeScreens="true" />
+
+    <application
+        android:hardwareAccelerated="true"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <receiver
+            android:name="com.rfo.basicTest.BootUpReceiver"
+            android:enabled="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+             android:name="com.rfo.basicTest.Basic"
+             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name" 
+             >
+          <!-- ^^ 2017-08-08 gt 
+                      android:launchMode="singleTask"
+            android:taskAffinity=""
+          
+          added launchMode, taskAffinity -->
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
+            </intent-filter>
+            <!-- vv 2017-11-25gt Comment it out if it should not be a hands free receiver, too. -->
+		    <intent-filter >
+		        <action android:name="android.speech.action.VOICE_SEARCH_HANDS_FREE" />
+		        <category android:name="android.intent.category.DEFAULT" />
+		    </intent-filter>
+             <!-- ^^ 2017-11-25gt -->
+		    <intent-filter>
+                  <!--
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                -->
+                <!-- vv 2016-10-21 gt ignore / as first character warning -->
+                 <!--
+                <data android:pathPattern=".*\\.bas" tools:ignore="AppIndexingError"/>
+                -->
+                <data android:host="*" />
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.PICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+                
+    			<data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.bas" tools:ignore="AppIndexingError"/>
+    			<data android:pathPattern=".*\\..*\\.bas" tools:ignore="AppIndexingError"/>
+    			<data android:pathPattern=".*\\..*\\..*\\.bas" tools:ignore="AppIndexingError"/>
+   				<data android:pathPattern=".*\\..*\\..*\\..*\\.bas" tools:ignore="AppIndexingError"/>
+                
+            </intent-filter>
+            <!-- vv 2018-04-18gt To get bitmaps after sending/sharing -->
+		    <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/jpeg"></data>
+                <data android:mimeType="image/jpg"></data>
+                <data android:mimeType="image/bmp"></data>
+                <data android:mimeType="image/png"></data>
+            </intent-filter>
+            <!-- ^^ 2018-0418gt -->
+		    		    
+        </activity>
+
+        <activity
+            android:name="com.rfo.basicTest.LauncherShortcuts"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="Launcher Shortcuts" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity-alias
+            android:name="CreateShortcuts"
+            android:label="Launcher Shortcuts"
+            android:targetActivity="LauncherShortcuts" >
+
+            <!-- This intent-filter allows your shortcuts to be created in the launcher. -->
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity
+            android:id="@+id/editor_screen"
+            android:name="com.rfo.basicTest.Editor"
+            android:label="@string/editor_name"
+            android:hardwareAccelerated="false" >
+        </activity>
+
+        <activity
+            android:id="@+id/settings_screen"
+            android:name="com.rfo.basicTest.Settings"
+            android:label="@string/settings_name" >
+        </activity>
+
+        <activity
+            android:id="@+id/about_screen"
+            android:name=".About"
+            android:label="@string/about_name"
+            android:hardwareAccelerated="false" >
+        </activity>
+
+        <activity
+            android:id="@+id/load_screen"
+            android:name="com.rfo.basicTest.LoadFile"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/load_name" >
+        </activity>
+
+        <activity
+            android:id="@+id/delete_screen"
+            android:name="com.rfo.basicTest.Delete"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/delete_name" >
+        </activity>
+
+        <activity
+            android:id="@+id/run_screen"
+            android:name="com.rfo.basicTest.Run"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/run_name" >
+        </activity>
+
+        <activity
+            android:id="@+id/search_screen"
+            android:name="com.rfo.basicTest.Search"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/search_name"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:hardwareAccelerated="false" >
+        </activity>
+
+        <activity
+            android:id="@+id/format_screen"
+            android:name="com.rfo.basicTest.Format"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/format_name" >
+        </activity>
+
+        <activity
+            android:id="@+id/help_screen"
+            android:name="com.rfo.basicTest.Help"
+            android:label="@string/help_name"
+            android:windowSoftInputMode="stateAlwaysVisible" >
+        </activity>
+
+        <activity
+            android:id="@+id/gr_screen"
+            android:name="com.rfo.basicTest.GR"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/gr_name"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+
+        <activity
+            android:id="@+id/select_screen"
+            android:name="com.rfo.basicTest.Select"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/select_name" >
+        </activity>
+
+        <activity
+            android:id="@+id/text_input_screen"
+            android:name="com.rfo.basicTest.TextInput"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/textinput_name" >
+        </activity>
+
+        <activity
+            android:id="@+id/text_get_screen"
+            android:name="com.rfo.basicTest.TGet"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/textinput_name"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+
+        <activity
+            android:id="@+id/web_view_screen"
+            android:name="com.rfo.basicTest.Web"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/web_view_name"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+
+        <activity
+            android:id="@+id/camera_screen"
+            android:name="com.rfo.basicTest.CameraView"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="Camera"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <activity
+            android:id="@+id/notify_screen"
+            android:name="com.rfo.basicTest.HandleNotify"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="Notify"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <activity
+            android:id="@+id/device_list_screen"
+            android:name="com.rfo.basicTest.DeviceListActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/select_device"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+
+        <activity
+            android:name="Null"
+            android:label="@string/select_name" >
+        </activity>
+
+<!-- vv 2016-05-23 gt -->
+        <activity android:name="com.rfo.basicTest.StartIntent"
+            android:id = "@+id/start_intent"
+         		  android:configChanges="keyboardHidden|orientation|screenSize"
+                  android:label="StartIntent" 
+        		  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                   >
+        </activity>
+<!-- vv 2017-07-10 gt  android:id="@+id/basic_screen" deleted -->  
+<!-- vv 2017-02-20 gt  android:name="com.rfo.basicTest.Null" deleted
+             
+
+-->  
+ 
+<!-- vv 2016-10-21 gt -->
+<!-- 
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.rfo.basic.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+				android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/filepaths" />
+       </provider>
+-->        
+        <uses-library android:name="com.sec.android.app.multiwindow" android:required="false" />
+        <meta-data android:name="com.sec.android.support.multiwindow" android:value="true" />
+        <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W" android:value="632.0dip" />
+        <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:value="598.0dip" />
+        <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:value="632.0dip" />
+        <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:value="598.0dip" />
+    </application>
+
+</manifest>
